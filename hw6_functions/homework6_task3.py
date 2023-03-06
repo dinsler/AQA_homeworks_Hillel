@@ -6,8 +6,8 @@
 
 def is_prime(number: int) -> bool:
     if number in range(2, 1001):
-        for _ in range(2, number):
-            if (number % _) == 0:
+        for i in range(2, number):
+            if (number % i) == 0:
                 return False
         return True
 
