@@ -28,6 +28,9 @@ class TxtProxyWriterReader:
             raise ValueError('Mode should be "w" for write or "a" for append')
         if not new_data:
             raise ValueError('New data shouldn\'t be a blank line')
+        if new_data == self.__result and mode == 'w':
+            print('Data already exist')
+            return
         new_data = f'\n{new_data.strip()}' if mode == 'a' else new_data.strip()
         self.__txt_writer.write(new_data, mode)
         self.__is_actual = False
@@ -44,3 +47,4 @@ if __name__ == '__main__':
     # print()
     proxy_tool.write_file('Some new data', 'w')
     print(proxy_tool.read_file())
+    proxy_tool.write_file('Some new data', 'w')
